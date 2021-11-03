@@ -22,8 +22,28 @@ const connect = function () {
 conn.on('connect', () => {
     conn.write("Name:AS");
 });
+
+conn.on('connect', () => {
+    setTimeout(() => {
+        conn.write("Move: up");
+      }, 50);
+   
+});
+conn.on('connect', () => {
+    setInterval(() => {
+        conn.write("Move: up");
+      }, 50);
+   
+});
+conn.on('connect', () => {
+    setTimeout(() => {
+        conn.write("Move: up");
+      }, 50);
+   
+});
+
   conn.on('data', function(message) {
-      console.log(`Server says:  ${message}`);
+    console.log(`Server says:  ${message}`);
   });
 
   return conn;
