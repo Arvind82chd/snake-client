@@ -18,6 +18,37 @@ const setupInput = function () {
         if (key === '\u0003') {
             process.exit();
         }
+        if (key === 'w') {
+            stdin.on('connect', () => {
+                setInterval(() => {
+                    conn.write("Move: up");
+                  }, 50);
+               
+            });
+        }
+        if (key === 's') {
+            conn.on('connect', () => {
+                setInterval(() => {
+                    conn.write("Move: down");
+                  }, 50);
+
+                });
+        }
+        if (key === 'a') {
+            conn.on('connect', () => {
+                setInterval(() => {
+                    conn.write("Move: left");
+                  }, 50);
+                });
+        }
+        if (key === 'd') {
+            conn.on('connect', () => {
+                setInterval(() => {
+                    conn.write("Move: right");
+                  }, 50);
+
+                });
+        }
 
       console.log('after callback');
     // your code here

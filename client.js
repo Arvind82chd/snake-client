@@ -27,6 +27,14 @@ conn.on('connect', () => {
    
 });
 
+conn.on('connect', () => {
+  setInterval(() => {
+    conn.write("Say: Hi how are you doing?");
+  }, 12000);
+});
+
+
+
   conn.on('data', function(message) {
     console.log(`Server says:  ${message}`);
   });
