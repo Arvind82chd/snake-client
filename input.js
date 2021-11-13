@@ -11,7 +11,13 @@ const setupInput = function () {
     
   };
 
-  const handleUserInput = function () {
+let connection;
+
+const setupInput = (conn) => {
+  connection = conn;
+};
+
+const handleUserInput = function () {
     process.stdin.on('data', (key) => {
         process.stdout.write('.');
       });
@@ -19,38 +25,31 @@ const setupInput = function () {
             process.exit();
         }
         if (key === 'w') {
-            stdin.on('connect', () => {
-                setInterval(() => {
-                    conn.write("Move: up");
-                  }, 50);
-               
+          console.log("Move: up");
+            conn.on('connect', () => {
+              conn.write("Move: up");
             });
         }
         if (key === 's') {
+          console.log("Move: down");
             conn.on('connect', () => {
-                setInterval(() => {
-                    conn.write("Move: down");
-                  }, 50);
-
-                });
-        }
+              conn.write("Move: down");
+            });
+        };
         if (key === 'a') {
+          console.log("Move: left");
             conn.on('connect', () => {
-                setInterval(() => {
-                    conn.write("Move: left");
-                  }, 50);
-                });
-        }
+              conn.write("Move: left");
+            });
+        };
         if (key === 'd') {
+          console.log("Move: right");
             conn.on('connect', () => {
-                setInterval(() => {
-                    conn.write("Move: right");
-                  }, 50);
-
-                });
-        }
-
+              conn.write("Move: right");
+            });
+        };
       console.log('after callback');
     // your code here
-  };
-  module.exports = {setupInput}
+};
+  
+module.exports = {setupInput}
